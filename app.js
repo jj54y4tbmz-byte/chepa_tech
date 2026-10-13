@@ -229,12 +229,117 @@ backBtn.addEventListener('click',()=>{
 
 brandHome.addEventListener('click',()=>{routeStack=['home']; activeRoute='home'; render();});
 
-searchInput.addEventListener('input',()=>{
-  const q = searchInput.value.trim().toLowerCase();
-  document.querySelectorAll('.searchable').forEach(el=>{
-    el.style.display = !q || (el.getAttribute('aria-label') || el.textContent).toLowerCase().includes(q) ? '' : 'none';
+const SEARCH_KEYWORDS = {
+  'technical-problems.pdf': 'поломка неисправность пропал звук отказ оборудования концерт',
+  'emergency-situations.pdf': 'авария происшествие экстренный опасность пожар',
+  'soundcheck.pdf': 'саундчек саунд чек проверка звук настройка',
+  'organizer-interaction.pdf': 'организатор заказчик клиент общение взаимодействие',
+  'company-vehicles.pdf': 'машина авто автомобиль транспорт поездка водитель',
+  'chat-communication.pdf': 'чат переписка сообщения общение',
+  'event-report.pdf': 'отчет отчёт отчетность мероприятие концерт',
+  'warehouse.pdf': 'склад хранение оборудование выдача возврат',
+  'dressing-room-filming.pdf': 'гримерка гримёрка съемка фото видео',
+  'concert-filming.pdf': 'концерт съемка фото видео'
+};
+
+function normalizeSearch(text){
+  return text.toLowerCase().replace(/ё/g,'е').replace(/[^a-zа-я0-9]+/g,' ').trim();
+}
+
+function searchForms(text){
+  const en = "qwertyuiop[]asdfghjkl;'zxcvbnm,.";
+  const ru = "йцукенгшщзхъфывапролджэячсмитьбю";
+  const forms = [normalizeSearch(text)];
+  if(/[a-z]/i.test(text)) forms.push(normalizeSearch([...text.toLowerCase()].map(c=>en.includes(c)?ru[en.indexOf(c)]:c).join('')));
+  if(/[а-яё]/i.test(text)) forms.push(normalizeSearch([...text.toLowerCase()].map(c=>ru.includes(c)?en[ru.indexOf(c)]:c).join('')));
+  return [...new Set(forms)].filter(Boolean);
+}
+
+function searchStem(word){
+  return word.length < 5 ? word : word.replace(/(иями|ями|ами|ого|ему|ому|ией|ий|ый|ой|ая|яя|ое|ее|ые|ие|ов|ев|ах|ях|ам|ям|ом|ем|а|я|ы|и|у|ю|е|о)$/,'');
+}
+
+function searchDistance(a,b){
+  const rows = Array.from({length:a.length+1},(_,i)=>Array(b.length+1).fill(0));
+  for(let i=0;i<=a.length;i++) rows[i][0]=i;
+  for(let j=0;j<=b.length;j++) rows[0][j]=j;
+  for(let i=1;i<=a.length;i++) for(let j=1;j<=b.length;j++){
+    rows[i][j]=Math.min(rows[i-1][j]+1,rows[i][j-1]+1,rows[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
+    if(i>1 && j>1 && a[i-1]===b[j-2] && a[i-2]===b[j-1]) rows[i][j]=Math.min(rows[i][j],rows[i-2][j-2]+1);
+  }
+  return rows[a.length][b.length];
+}
+
+function searchScore(query, name, keywords=''){
+  const title = normalizeSearch(name);
+  const words = title.split(' ');
+  const aliases = normalizeSearch(keywords).split(' ');
+  let best = 0;
+  for(const form of searchForms(query)){
+    if(title === form){ best=Math.max(best,1000); continue; }
+    const tokens = form.split(' ');
+    let total = 0;
+    for(const token of tokens){
+      let score = 0;
+      for(const [source, weight] of [[words,100],[aliases,65]]){
+        for(const word of source){
+          if(word===token) score=Math.max(score,weight);
+          else if(word.startsWith(token)) score=Math.max(score,weight-10);
+          else if(token.length>=3 && word.includes(token)) score=Math.max(score,weight-20);
+          else if(token.length>=4 && searchStem(word)===searchStem(token)) score=Math.max(score,weight-15);
+          else if(token.length>=4 && Math.abs(word.length-token.length)<=2 && searchDistance(token,word)<=(token.length>=7?2:1)) score=Math.max(score,weight-40);
+        }
+      }
+      if(!score){ total=0; break; }
+      total+=score;
+    }
+    best=Math.max(best,total+(title.includes(form)?200:0));
+  }
+  return best;
+}
+
+function searchCatalog(){
+  return [
+    ...DATA.groups.map(g=>({name:g.name,section:'Группы',route:'group:'+g.id,keywords:g.desc+' '+({'rvi-bayan':'rvi bayan','nemodnye':'nemodnye','konchiki':'на кончиках пальцев'}[g.id]||'')})),
+    ...DATA.standards.map(d=>({name:d.name,section:'Стандарты',route:'standard:'+d.file,keywords:SEARCH_KEYWORDS[d.file]||''})),
+    ...DATA.venues.map(v=>({name:v.name,section:'Площадки',route:'venues',keywords:v.city+' '+v.sound})),
+    ...DATA.repair.map(([name,keywords])=>({name,section:'Ремонт',route:'repair',keywords})),
+    ...[['Группы','groups'],['Стандарты','standards'],['Ремонт','repair'],['Площадки','venues']].map(([name,route])=>({name,route,section:'Раздел',keywords:''}))
+  ];
+}
+
+function runSearch(query){
+  if(activeRoute==='home'){
+    if(!query.trim()){render();searchInput.focus();return;}
+    const hits=searchCatalog().map(item=>({...item,score:searchScore(query,item.name,item.keywords)})).filter(item=>item.score>0).sort((a,b)=>b.score-a.score);
+    screen.innerHTML=hits.length ? '<div class="list search-results"></div>' : '<div class="empty" role="status">Ничего не найдено. Попробуйте другое слово.</div>';
+    const list=screen.querySelector('.search-results');
+    for(const hit of hits){
+      const button=document.createElement('button');
+      button.className='list-item';
+      const copy=document.createElement('div');copy.className='list-main';
+      const heading=document.createElement('h4');heading.textContent=hit.name;
+      const section=document.createElement('p');section.textContent=hit.section;
+      copy.append(heading,section);button.append(copy);
+      button.addEventListener('click',()=>navigate(hit.route));
+      list.append(button);
+    }
+    return;
+  }
+  const elements=[...screen.querySelectorAll('.searchable')];
+  const scored=elements.map((el,index)=>{
+    const key=el.dataset.standard;
+    const name=el.getAttribute('aria-label')||el.textContent;
+    return {el,index,score:query.trim()?searchScore(query,name,SEARCH_KEYWORDS[key]||''):1};
   });
-});
+  scored.sort((a,b)=>b.score-a.score||a.index-b.index).forEach(({el,score},index)=>{el.style.display=score?'':'none';el.style.order=query.trim()?index:'';});
+  screen.querySelector('.search-empty')?.remove();
+  if(elements.length && !scored.some(item=>item.score)){
+    const empty=document.createElement('div');empty.className='empty search-empty';empty.setAttribute('role','status');empty.textContent='Ничего не найдено. Попробуйте другое слово.';screen.append(empty);
+  }
+}
+
+searchInput.addEventListener('input',()=>runSearch(searchInput.value));
 
 if(window.Telegram?.WebApp){
   const tg = window.Telegram.WebApp;
