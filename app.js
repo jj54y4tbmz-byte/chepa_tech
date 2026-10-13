@@ -153,11 +153,9 @@ function render(){
 
   if(activeRoute === 'groups'){
     setHeader('Группы','СОСТАВЫ И МАТЕРИАЛЫ','Поиск по группам');
-    screen.innerHTML = `<div class="list">${DATA.groups.map(g=>`
-      <button class="list-item searchable" data-group="${g.id}">
-        <div class="list-icon">◫</div>
-        <div class="list-main"><h4>${g.name}</h4><p>${g.desc}</p></div>
-        <div class="list-chevron">›</div>
+    screen.innerHTML = `<div class="grid home-grid groups-grid">${DATA.groups.map(g=>`
+      <button class="card nav-card group-logo-card searchable" data-group="${g.id}" aria-label="${g.name}">
+        <img src="./logo-${g.id}-white.png" alt="${g.name}" />
       </button>`).join('')}</div>`;
     screen.querySelectorAll('[data-group]').forEach(b=>b.addEventListener('click',()=>navigate(`group:${b.dataset.group}`)));
     return;
@@ -234,7 +232,7 @@ brandHome.addEventListener('click',()=>{routeStack=['home']; activeRoute='home';
 searchInput.addEventListener('input',()=>{
   const q = searchInput.value.trim().toLowerCase();
   document.querySelectorAll('.searchable').forEach(el=>{
-    el.style.display = !q || el.textContent.toLowerCase().includes(q) ? '' : 'none';
+    el.style.display = !q || (el.getAttribute('aria-label') || el.textContent).toLowerCase().includes(q) ? '' : 'none';
   });
 });
 
