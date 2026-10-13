@@ -24,21 +24,12 @@ const DATA = {
     ['IEM / RF','Радиосистемы, антенны, мониторинг'],
     ['Playback','Mac, интерфейсы, DAW, MIDI'],
     ['Микшеры / Stagebox','Midas, Behringer и другое']
-  ],
-  contacts: [
-    ['Альберто','Звукорежиссёр'],
-    ['Галкин','Звукорежиссёр'],
-    ['Никита','Звукорежиссёр'],
-    ['Серёга Нефор','Звукорежиссёр'],
-    ['Вася Бубен','Звукорежиссёр'],
-    ['Серж','Склад']
   ]
 };
 
 const screen = document.querySelector('#screen');
 const backBtn = document.querySelector('#backBtn');
 const title = document.querySelector('#screenTitle');
-const subtitle = document.querySelector('#screenSubtitle');
 const searchInput = document.querySelector('#searchInput');
 const brandHome = document.querySelector('#brandHome');
 
@@ -47,7 +38,6 @@ let activeRoute = 'home';
 
 function setHeader(t, s, placeholder='Поиск'){
   title.textContent = t;
-  subtitle.textContent = s;
   searchInput.placeholder = placeholder;
   backBtn.classList.toggle('hidden', activeRoute === 'home');
 }
@@ -135,16 +125,6 @@ function render(){
     return;
   }
 
-  if(activeRoute === 'contacts'){
-    setHeader('Контакты','КОМАНДА ЛИХТЕР-СТУДИИ','Поиск контакта');
-    screen.innerHTML = `<div class="list">${DATA.contacts.map(([name,role])=>`
-      <button class="list-item searchable contact-row">
-        <div class="avatar">${name.slice(0,1)}</div>
-        <div class="list-main"><h4>${name}</h4><p>${role}</p></div>
-        <div class="list-chevron">›</div>
-      </button>`).join('')}</div>`;
-    return;
-  }
 }
 
 backBtn.addEventListener('click',()=>{
