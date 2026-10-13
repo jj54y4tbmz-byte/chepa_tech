@@ -15,17 +15,21 @@
   <div class="ambient ambient-b"></div>
 
   <main class="app-shell">
-    <header class="topbar">
+    <header class="topbar" style="min-height:72px">
       <button id="backBtn" class="icon-btn hidden" aria-label="Назад">
         <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
 
-      <div class="brand" id="brandHome">
-        <img class="brand-logo" src="./logo-likhter.png" alt="Лихтер-студия">
+      <div class="brand" id="brandHome" style="display:flex;align-items:center">
+        <img
+          src="./logo-likhter.png"
+          alt="Лихтер-студия"
+          style="display:block;width:82px;height:auto;max-height:64px;object-fit:contain"
+        >
       </div>
     </header>
 
-    <section class="hero">
+    <section class="hero" style="padding-top:14px">
       <h1 id="screenTitle">Лихтер-техник</h1>
     </section>
 
