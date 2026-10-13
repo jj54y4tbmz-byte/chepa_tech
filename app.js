@@ -12,13 +12,47 @@ const DATA = {
     {name:'Севкабель', city:'Санкт-Петербург', sound:'Несколько пространств', load:'Занос: сложный', cls:'red'}
   ],
   standards: [
-    ['Подготовка концерта','Чек-листы, планы, проверки','☑'],
-    ['Монтаж','Порядок работ, схемы, требования','⌁'],
-    ['Саундчек','Настройки, уровни, маршрутизация','≋'],
-    ['Демонтаж','Разборка, упаковка, сдача оборудования','▣'],
-    ['Склад','Хранение, комплектация, учёт','▤'],
-    ['Техника безопасности','Правила, допуски, риски','⌂']
-  ],
+  {
+    "name": "Алгоритм действий при возникновении технических проблем во время концерта",
+    "file": "technical-problems.pdf"
+  },
+  {
+    "name": "Алгоритм действий при нештатных ситуациях",
+    "file": "emergency-situations.pdf"
+  },
+  {
+    "name": "Алгоритм саундчека",
+    "file": "soundcheck.pdf"
+  },
+  {
+    "name": "Стандарт взаимодействия техника с организатором или заказчиком в день мероприятия",
+    "file": "organizer-interaction.pdf"
+  },
+  {
+    "name": "Стандарт использования служебных автомобилей",
+    "file": "company-vehicles.pdf"
+  },
+  {
+    "name": "Стандарт общения в чатах",
+    "file": "chat-communication.pdf"
+  },
+  {
+    "name": "Стандарт отчета после мероприятия",
+    "file": "event-report.pdf"
+  },
+  {
+    "name": "Стандарт работы на складе",
+    "file": "warehouse.pdf"
+  },
+  {
+    "name": "Стандарт съемки гримерки",
+    "file": "dressing-room-filming.pdf"
+  },
+  {
+    "name": "Стандарт съемки на концерте",
+    "file": "concert-filming.pdf"
+  }
+],
   repair: [
     ['Кабели','XLR, Jack, Speakon, CAT и другое'],
     ['IEM / RF','Радиосистемы, антенны, мониторинг'],
@@ -104,11 +138,12 @@ function render(){
 
   if(activeRoute === 'standards'){
     setHeader('Стандарты','РЕГЛАМЕНТЫ И ИНСТРУКЦИИ','Поиск по стандартам');
-    screen.innerHTML = `<div class="grid home-grid">${DATA.standards.map(([a,b,c])=>`
-      <button class="card nav-card searchable">
-        <div class="icon-badge">${c}</div>
-        <div class="card-copy"><h3>${a}</h3><p>${b}</p></div><span class="chev">›</span>
-      </button>`).join('')}</div>`;
+    screen.innerHTML = `<div class="list">${DATA.standards.map(doc=>`
+      <a class="list-item searchable" href="./${doc.file}" target="_blank" rel="noopener">
+        <div class="list-icon">▤</div>
+        <div class="list-main"><h4>${doc.name}</h4><p>PDF</p></div>
+        <div class="list-chevron">›</div>
+      </a>`).join('')}</div>`;
     return;
   }
 
