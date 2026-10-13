@@ -97,3 +97,9 @@ button{color:inherit}
 a.list-item{color:inherit;text-decoration:none}
 a.list-item:focus-visible{outline:2px solid var(--blue-2);outline-offset:3px}
 .list-main h4{overflow-wrap:anywhere;line-height:1.4}
+
+.reading-pdf{max-width:960px}
+.reading-pdf .hero h1{font-size:22px;line-height:1.3;letter-spacing:-.02em}
+.pdf-status{color:var(--muted);font-size:13px;margin:0 0 12px}
+.pdf-pages{display:grid;gap:14px}
+.pdf-pages canvas{display:block;width:100%;height:auto;background:white;border-radius:4px}

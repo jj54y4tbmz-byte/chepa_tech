@@ -69,6 +69,54 @@ const brandHome = document.querySelector('#brandHome');
 
 let routeStack = ['home'];
 let activeRoute = 'home';
+let pdfTask = null;
+let pdfSession = 0;
+let pdfLibrary;
+
+function closePdf(){
+  pdfSession++;
+  if(pdfTask){ pdfTask.destroy(); pdfTask = null; }
+}
+
+async function showPdf(doc){
+  const session = pdfSession;
+  const status = screen.querySelector('.pdf-status');
+  try {
+    pdfLibrary ||= import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/legacy/build/pdf.mjs');
+    const pdfjs = await pdfLibrary;
+    if(session !== pdfSession) return;
+    pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/legacy/build/pdf.worker.mjs';
+    pdfTask = pdfjs.getDocument(new URL(doc.file, location.href).href);
+    const pdf = await pdfTask.promise;
+    if(session !== pdfSession) return;
+    const pages = screen.querySelector('.pdf-pages');
+    status.textContent = `Страниц: ${pdf.numPages}`;
+    for(let n=1; n<=pdf.numPages; n++){
+      const page = await pdf.getPage(n);
+      if(session !== pdfSession) return;
+      const width = Math.max(280, pages.clientWidth);
+      const viewport = page.getViewport({scale: width / page.getViewport({scale:1}).width});
+      const canvas = document.createElement('canvas');
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.ceil(viewport.width * ratio);
+      canvas.height = Math.ceil(viewport.height * ratio);
+      canvas.setAttribute('aria-label', `Страница ${n} из ${pdf.numPages}`);
+      canvas.setAttribute('role', 'img');
+      pages.append(canvas);
+      await page.render({canvasContext:canvas.getContext('2d'), viewport,
+        transform:[ratio,0,0,ratio,0,0]}).promise;
+      page.cleanup();
+    }
+  } catch(error){
+    if(session !== pdfSession) return;
+    status.textContent = 'Не удалось загрузить документ. Проверьте интернет и попробуйте снова.';
+    const retry = document.createElement('button');
+    retry.className = 'list-item';
+    retry.textContent = 'Повторить загрузку';
+    retry.addEventListener('click', ()=>render());
+    status.after(retry);
+  }
+}
 
 function setHeader(t, s, placeholder='Поиск'){
   title.textContent = t;
@@ -92,7 +140,10 @@ function navigate(route, push=true){
 }
 
 function render(){
+  closePdf();
   searchInput.value = '';
+  searchInput.closest('.search-wrap').classList.toggle('hidden', activeRoute.startsWith('standard:'));
+  document.querySelector('.app-shell').classList.toggle('reading-pdf', activeRoute.startsWith('standard:'));
   if(activeRoute === 'home'){
     setHeader('Лихтер-техник','ОБОРУДОВАНИЕ · ЛЮДИ · ПРОЦЕССЫ','Поиск');
     screen.innerHTML = document.querySelector('#homeTemplate').innerHTML;
@@ -139,11 +190,21 @@ function render(){
   if(activeRoute === 'standards'){
     setHeader('Стандарты','РЕГЛАМЕНТЫ И ИНСТРУКЦИИ','Поиск по стандартам');
     screen.innerHTML = `<div class="list">${DATA.standards.map(doc=>`
-      <a class="list-item searchable" href="./${doc.file}" target="_blank" rel="noopener">
+      <button class="list-item searchable" data-standard="${doc.file}">
         <div class="list-icon">▤</div>
         <div class="list-main"><h4>${doc.name}</h4><p>PDF</p></div>
         <div class="list-chevron">›</div>
-      </a>`).join('')}</div>`;
+      </button>`).join('')}</div>`;
+    screen.querySelectorAll('[data-standard]').forEach(button=>button.addEventListener('click',()=>navigate(`standard:${button.dataset.standard}`)));
+    return;
+  }
+
+  if(activeRoute.startsWith('standard:')){
+    const doc = DATA.standards.find(item=>item.file === activeRoute.slice(9));
+    if(!doc){ navigate('standards', false); return; }
+    setHeader(doc.name, '');
+    screen.innerHTML = '<div class="pdf-status" role="status">Загрузка документа…</div><div class="pdf-pages"></div>';
+    showPdf(doc);
     return;
   }
 
