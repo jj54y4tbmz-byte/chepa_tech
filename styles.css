@@ -113,3 +113,17 @@ a.list-item:focus-visible{outline:2px solid var(--blue-2);outline-offset:3px}
 .costume-description{white-space:pre-line;line-height:1.6;font-size:15px;padding:16px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
 .costume-table{border-collapse:collapse;width:100%;font-size:13px;margin-top:16px}
 .costume-table th,.costume-table td{border:1px solid var(--line);padding:10px 6px;text-align:left;overflow-wrap:anywhere}
+
+.venue-card{display:block;cursor:default;scroll-margin-top:20px}
+.venue-card[hidden]{display:none}
+.venue-card:active{transform:none}
+.venue-heading{display:flex;align-items:center;gap:13px}
+.venue-heading h4{margin:0;font-size:16px;line-height:1.4}
+.venue-address{color:var(--muted);font-size:12px;line-height:1.5;margin:12px 0}
+.venue-fields{display:grid;gap:8px;margin:0}
+.venue-fields>div{display:grid;grid-template-columns:76px minmax(0,1fr);gap:8px}
+.venue-fields dt{color:var(--muted);font-size:12px;line-height:1.5}
+.venue-fields dd{margin:0;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.venue-fields>div:first-child dd{color:#9ecbff}
+.venue-select-label{display:block;color:var(--muted);font-size:12px;margin-top:12px}
+.venue-select{display:block;width:100%;margin-top:6px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--panel-2);color:var(--text);font:inherit;font-size:14px}
