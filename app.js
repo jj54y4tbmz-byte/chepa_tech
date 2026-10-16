@@ -5,6 +5,116 @@ const DATA = {
     {id:'true-party-band', name:'True Party Band', desc:'Оборудование · Stage Plan · костюмы'},
     {id:'konchiki', name:'На Кончиках Пальцев', desc:'Оборудование · Stage Plan · костюмы'}
   ],
+  equipment: [
+  {
+    "name": "Список оборудования группы TPB1",
+    "group": "true-party-band",
+    "category": "",
+    "file": "equipment-true-party-band-01.pdf"
+  },
+  {
+    "name": "Список оборудования группы TPB2",
+    "group": "true-party-band",
+    "category": "",
+    "file": "equipment-true-party-band-02.pdf"
+  },
+  {
+    "name": "Список оборудования группы TPB3",
+    "group": "true-party-band",
+    "category": "",
+    "file": "equipment-true-party-band-03.pdf"
+  },
+  {
+    "name": "На Кончиках Пальцев",
+    "group": "konchiki",
+    "category": "",
+    "file": "equipment-konchiki-04.pdf"
+  },
+  {
+    "name": "Ваня",
+    "group": "nemodnye",
+    "category": "Барабанщики",
+    "file": "equipment-nemodnye-05.pdf"
+  },
+  {
+    "name": "Гера",
+    "group": "nemodnye",
+    "category": "Барабанщики",
+    "file": "equipment-nemodnye-06.pdf"
+  },
+  {
+    "name": "Никита",
+    "group": "nemodnye",
+    "category": "Барабанщики",
+    "file": "equipment-nemodnye-07.pdf"
+  },
+  {
+    "name": "Сергей",
+    "group": "nemodnye",
+    "category": "Барабанщики",
+    "file": "equipment-nemodnye-08.pdf"
+  },
+  {
+    "name": "Серж",
+    "group": "nemodnye",
+    "category": "Барабанщики",
+    "file": "equipment-nemodnye-09.pdf"
+  },
+  {
+    "name": "Черных",
+    "group": "nemodnye",
+    "category": "Барабанщики",
+    "file": "equipment-nemodnye-10.pdf"
+  },
+  {
+    "name": "Азиз",
+    "group": "nemodnye",
+    "category": "Вокалисты",
+    "file": "equipment-nemodnye-11.pdf"
+  },
+  {
+    "name": "Айдин",
+    "group": "nemodnye",
+    "category": "Вокалисты",
+    "file": "equipment-nemodnye-12.pdf"
+  },
+  {
+    "name": "Даня",
+    "group": "nemodnye",
+    "category": "Вокалисты",
+    "file": "equipment-nemodnye-13.pdf"
+  },
+  {
+    "name": "Карим",
+    "group": "nemodnye",
+    "category": "Вокалисты",
+    "file": "equipment-nemodnye-14.pdf"
+  },
+  {
+    "name": "Ткач",
+    "group": "nemodnye",
+    "category": "Вокалисты",
+    "file": "equipment-nemodnye-15.pdf"
+  },
+  {
+    "name": "Цыга",
+    "group": "nemodnye",
+    "category": "Вокалисты",
+    "file": "equipment-nemodnye-16.pdf"
+  },
+  {
+    "name": "Список оборудования группы РБ1",
+    "group": "rvi-bayan",
+    "category": "",
+    "file": "equipment-rvi-bayan-17.pdf"
+  },
+  {
+    "name": "Список оборудования группы РБ2",
+    "group": "rvi-bayan",
+    "category": "",
+    "file": "equipment-rvi-bayan-18.pdf"
+  }
+],
   venues: [
     {name:'A2', city:'Санкт-Петербург', sound:'Звук: L-Acoustics', load:'Занос: лёгкий', cls:'blue'},
     {name:'Aurora', city:'Санкт-Петербург', sound:'Звук: d&b', load:'Занос: средний', cls:''},
@@ -142,8 +252,8 @@ function navigate(route, push=true){
 function render(){
   closePdf();
   searchInput.value = '';
-  searchInput.closest('.search-wrap').classList.toggle('hidden', activeRoute.startsWith('standard:'));
-  document.querySelector('.app-shell').classList.toggle('reading-pdf', activeRoute.startsWith('standard:'));
+  searchInput.closest('.search-wrap').classList.toggle('hidden', (activeRoute.startsWith('standard:') || activeRoute.startsWith('equipment:')));
+  document.querySelector('.app-shell').classList.toggle('reading-pdf', (activeRoute.startsWith('standard:') || activeRoute.startsWith('equipment:')));
   if(activeRoute === 'home'){
     setHeader('Лихтер-техник','ОБОРУДОВАНИЕ · ЛЮДИ · ПРОЦЕССЫ','Поиск');
     screen.innerHTML = document.querySelector('#homeTemplate').innerHTML;
@@ -165,11 +275,21 @@ function render(){
     const id = activeRoute.split(':')[1];
     const g = DATA.groups.find(x=>x.id===id) || DATA.groups[0];
     setHeader(g.name,'ГРУППА · МАТЕРИАЛЫ','Поиск по разделу');
+    const documents = DATA.equipment.filter(doc=>doc.group===id);
+    const categories = [...new Set(documents.map(doc=>doc.category))];
+    screen.innerHTML = '<div class="section-title">Списки оборудования</div>' + categories.map(category=>{
+      const docs = documents.filter(doc=>doc.category===category);
+      return (category ? `<div class="section-title">${category}</div>` : '') +
+        `<div class="list">${docs.map(doc=>`
+          <button class="list-item searchable" data-equipment="${doc.file}" aria-label="${doc.name} ${category}">
+            <div class="list-icon">▣</div>
+            <div class="list-main"><h4>${doc.name}</h4><p>${category || 'Список оборудования'} · PDF</p></div>
+            <div class="list-chevron">›</div>
+          </button>`).join('')}</div>`;
+    }).join('');
+    screen.querySelectorAll('[data-equipment]').forEach(button=>button.addEventListener('click',()=>navigate('equipment:'+button.dataset.equipment)));
     if(id === 'nemodnye'){
-      const eq = Array.from({length:6},(_,i)=>listItem('▣',`Оборудование — Состав ${i+1}`,'Полный список оборудования'));
-      screen.innerHTML = `
-        <div class="section-title">Списки оборудования</div>
-        <div class="list">${eq.join('')}</div>
+      screen.insertAdjacentHTML('beforeend', `
         <div class="section-title" style="margin-top:22px">Stage Plan</div>
         <div class="subgrid">
           <button class="subcard searchable"><div>⌁</div><div class="big">Обычный</div><div class="mini">состав</div></button>
@@ -178,9 +298,7 @@ function render(){
         </div>
         <div class="section-title" style="margin-top:22px">Костюмы</div>
         <div class="list">${listItem('⌘','Общий список костюмов','Для всех составов')}</div>
-      `;
-    } else {
-      screen.innerHTML = `<div class="empty">Структура для группы «${g.name}» будет добавлена следующим шагом.</div>`;
+      `);
     }
     return;
   }
@@ -197,8 +315,9 @@ function render(){
     return;
   }
 
-  if(activeRoute.startsWith('standard:')){
-    const doc = DATA.standards.find(item=>item.file === activeRoute.slice(9));
+  if((activeRoute.startsWith('standard:') || activeRoute.startsWith('equipment:'))){
+    const isEquipment = activeRoute.startsWith('equipment:');
+    const doc = (isEquipment ? DATA.equipment : DATA.standards).find(item=>item.file === activeRoute.slice(isEquipment ? 10 : 9));
     if(!doc){ navigate('standards', false); return; }
     setHeader(doc.name, '');
     screen.innerHTML = '<div class="pdf-status" role="status">Загрузка документа…</div><div class="pdf-pages"></div>';
@@ -301,6 +420,7 @@ function searchScore(query, name, keywords=''){
 function searchCatalog(){
   return [
     ...DATA.groups.map(g=>({name:g.name,section:'Группы',route:'group:'+g.id,keywords:g.desc+' '+({'rvi-bayan':'rvi bayan','nemodnye':'nemodnye','konchiki':'на кончиках пальцев'}[g.id]||'')})),
+    ...DATA.equipment.map(d=>({name:d.name,section:DATA.groups.find(g=>g.id===d.group).name+' · Оборудование'+(d.category?' · '+d.category:''),route:'equipment:'+d.file,keywords:'оборудование список '+d.category+' '+DATA.groups.find(g=>g.id===d.group).name})),
     ...DATA.standards.map(d=>({name:d.name,section:'Стандарты',route:'standard:'+d.file,keywords:SEARCH_KEYWORDS[d.file]||''})),
     ...DATA.venues.map(v=>({name:v.name,section:'Площадки',route:'venues',keywords:v.city+' '+v.sound})),
     ...DATA.repair.map(([name,keywords])=>({name,section:'Ремонт',route:'repair',keywords})),
@@ -328,7 +448,7 @@ function runSearch(query){
   }
   const elements=[...screen.querySelectorAll('.searchable')];
   const scored=elements.map((el,index)=>{
-    const key=el.dataset.standard;
+    const key=el.dataset.standard || el.dataset.equipment;
     const name=el.getAttribute('aria-label')||el.textContent;
     return {el,index,score:query.trim()?searchScore(query,name,SEARCH_KEYWORDS[key]||''):1};
   });
