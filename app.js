@@ -5,6 +5,7 @@ const DATA = {
     {id:'true-party-band', name:'True Party Band', desc:'Оборудование · Stage Plan · костюмы'},
     {id:'konchiki', name:'На Кончиках Пальцев', desc:'Оборудование · Stage Plan · костюмы'}
   ],
+  costumes: [{"id":"costume-rvi-bayan-01","name":"КИТЕЛИ","group":"rvi-bayan","photo":"costume-rvi-bayan-01.jpg","file":"costume-rvi-bayan-01.json"},{"id":"costume-rvi-bayan-02","name":"БЕЛО-СИНИЕ (ГЖЕЛЬ)","group":"rvi-bayan","photo":"costume-rvi-bayan-02.jpg","file":"costume-rvi-bayan-02.json"},{"id":"costume-rvi-bayan-03","name":"БЕЛЫЕ НАРОДНЫЕ","group":"rvi-bayan","photo":"costume-rvi-bayan-03.jpg","file":"costume-rvi-bayan-03.json"},{"id":"costume-rvi-bayan-04","name":"КРАСНЫЕ РУБАШКИ","group":"rvi-bayan","photo":"costume-rvi-bayan-04.jpg","file":"costume-rvi-bayan-04.json"},{"id":"costume-rvi-bayan-05","name":"ЗЕЛЕНЫЕ ЦВЕТЫ","group":"rvi-bayan","photo":"costume-rvi-bayan-05.jpg","file":"costume-rvi-bayan-05.json"},{"id":"costume-rvi-bayan-06","name":"ЗЕЛЕНЫЕ РУБАШКИ","group":"rvi-bayan","photo":"costume-rvi-bayan-06.jpg","file":"costume-rvi-bayan-06.json"},{"id":"costume-rvi-bayan-07","name":"ЧЕРНЫЕ","group":"rvi-bayan","photo":"costume-rvi-bayan-07.jpg","file":"costume-rvi-bayan-07.json"},{"id":"costume-rvi-bayan-08","name":"КРАСНО-ЧЕРНЫЕ НОВЫЕ","group":"rvi-bayan","photo":"costume-rvi-bayan-08.jpg","file":"costume-rvi-bayan-08.json"},{"id":"costume-rvi-bayan-09","name":"БЕЛЫЕ РУБАШКИ ОРНАМЕНТ НОВЫЕ","group":"rvi-bayan","photo":"costume-rvi-bayan-09.jpg","file":"costume-rvi-bayan-09.json"},{"id":"costume-rvi-bayan-10","name":"БЕЛЫЕ НОВЫЕ","group":"rvi-bayan","photo":"costume-rvi-bayan-10.jpg","file":"costume-rvi-bayan-10.json"},{"id":"costume-rvi-bayan-11","name":"БОХО","group":"rvi-bayan","photo":"costume-rvi-bayan-11.jpg","file":"costume-rvi-bayan-11.json"},{"id":"costume-rvi-bayan-12","name":"КРАСНЫЕ КЛЕТКА","group":"rvi-bayan","photo":"costume-rvi-bayan-12.jpg","file":"costume-rvi-bayan-12.json"},{"id":"costume-rvi-bayan-13","name":"Морские","group":"rvi-bayan","photo":"costume-rvi-bayan-13.jpg","file":"costume-rvi-bayan-13.json"},{"id":"costume-true-party-band-01","name":"Голубые","group":"true-party-band","photo":"costume-true-party-band-01.jpg","file":"costume-true-party-band-01.json"},{"id":"costume-true-party-band-02","name":"БЕЛЫЕ ПИДЖАКИ (ЕСТЬ 3 КОМПЛЕКТА!)","group":"true-party-band","photo":"costume-true-party-band-02.jpg","file":"costume-true-party-band-02.json"},{"id":"costume-true-party-band-03","name":"КРАСНЫЕ ПИДЖАКИ","group":"true-party-band","photo":"costume-true-party-band-03.jpg","file":"costume-true-party-band-03.json"},{"id":"costume-true-party-band-04","name":"ВЕСЕННИЕ ЦВЕТЫ (КЛЯКСЫ)","group":"true-party-band","photo":"costume-true-party-band-04.jpg","file":"costume-true-party-band-04.json"},{"id":"costume-true-party-band-05","name":"ЗЕЛЕНЫЕ ПИДЖАКИ","group":"true-party-band","photo":"costume-true-party-band-05.jpg","file":"costume-true-party-band-05.json"},{"id":"costume-true-party-band-06","name":"КИМОНО","group":"true-party-band","photo":"costume-true-party-band-06.jpg","file":"costume-true-party-band-06.json"},{"id":"costume-true-party-band-07","name":"КЛАССИКА","group":"true-party-band","photo":"costume-true-party-band-07.jpg","file":"costume-true-party-band-07.json"},{"id":"costume-true-party-band-08","name":"РАСПИСНЫЕ РУБАШКИ","group":"true-party-band","photo":"costume-true-party-band-08.jpg","file":"costume-true-party-band-08.json"},{"id":"costume-true-party-band-09","name":"ЧЕРНОЕ ЗОЛОТО","group":"true-party-band","photo":"costume-true-party-band-09.jpg","file":"costume-true-party-band-09.json"},{"id":"costume-true-party-band-10","name":"БОХО","group":"true-party-band","photo":"costume-true-party-band-10.jpg","file":"costume-true-party-band-10.json"},{"id":"costume-true-party-band-11","name":"ГРАФИТ","group":"true-party-band","photo":"costume-true-party-band-11.jpg","file":"costume-true-party-band-11.json"},{"id":"costume-true-party-band-12","name":"ШАХМАТЫ (ЧЕРНО- БЕЛЫЕ СТАРЫЕ)","group":"true-party-band","photo":"costume-true-party-band-12.jpg","file":"costume-true-party-band-12.json"},{"id":"costume-nemodnye-01","name":"Гранж","group":"nemodnye","photo":"costume-nemodnye-01.jpg","file":"costume-nemodnye-01.json"},{"id":"costume-nemodnye-02","name":"Белые футболки","group":"nemodnye","photo":"costume-nemodnye-02.jpg","file":"costume-nemodnye-02.json"},{"id":"costume-nemodnye-03","name":"Классика","group":"nemodnye","photo":"costume-nemodnye-03.jpg","file":"costume-nemodnye-03.json"},{"id":"costume-nemodnye-04","name":"Черно-белые","group":"nemodnye","photo":"costume-nemodnye-04.jpg","file":"costume-nemodnye-04.json"},{"id":"costume-nemodnye-05","name":"Пижамы","group":"nemodnye","photo":"costume-nemodnye-05.jpg","file":"costume-nemodnye-05.json"},{"id":"costume-nemodnye-06","name":"Серебро","group":"nemodnye","photo":"costume-nemodnye-06.jpg","file":"costume-nemodnye-06.json"},{"id":"costume-nemodnye-07","name":"Оливковые","group":"nemodnye","photo":"costume-nemodnye-07.jpg","file":"costume-nemodnye-07.json"},{"id":"costume-nemodnye-08","name":"Бордо","group":"nemodnye","photo":"costume-nemodnye-08.jpg","file":"costume-nemodnye-08.json"},{"id":"costume-nemodnye-09","name":"Кляксы","group":"nemodnye","photo":"costume-nemodnye-09.jpg","file":"costume-nemodnye-09.json"},{"id":"costume-nemodnye-10","name":"Анималк","group":"nemodnye","photo":"costume-nemodnye-10.jpg","file":"costume-nemodnye-10.json"},{"id":"costume-nemodnye-11","name":"Черное золото","group":"nemodnye","photo":"costume-nemodnye-11.jpg","file":"costume-nemodnye-11.json"},{"id":"costume-nemodnye-12","name":"Бежевое","group":"nemodnye","photo":"costume-nemodnye-12.jpg","file":"costume-nemodnye-12.json"},{"id":"costume-nemodnye-13","name":"Тотал Блек","group":"nemodnye","photo":"costume-nemodnye-13.jpg","file":"costume-nemodnye-13.json"},{"id":"costume-nemodnye-14","name":"Тотал Блек футболки","group":"nemodnye","photo":"costume-nemodnye-14.jpg","file":"costume-nemodnye-14.json"},{"id":"costume-nemodnye-15","name":"Розовые","group":"nemodnye","photo":"costume-nemodnye-15.jpg","file":"costume-nemodnye-15.json"},{"id":"costume-nemodnye-16","name":"Зеленые","group":"nemodnye","photo":"costume-nemodnye-16.jpg","file":"costume-nemodnye-16.json"},{"id":"costume-nemodnye-17","name":"Белые новые","group":"nemodnye","photo":"costume-nemodnye-17.jpg","file":"costume-nemodnye-17.json"}],
   equipment: [
   {
     "name": "Список оборудования группы TPB1",
@@ -228,6 +229,32 @@ async function showPdf(doc){
   }
 }
 
+async function showCostume(item,session){
+  const container=screen.querySelector('.costume-detail');
+  try{
+    const response=await fetch('./'+item.file);
+    if(!response.ok) throw new Error('load');
+    const data=await response.json();
+    if(session!==costumeSession)return;
+    container.replaceChildren();
+    const photo=document.createElement('img');
+    photo.className='costume-photo';photo.src='./'+data.photo;photo.alt=data.name;
+    container.append(photo);
+    if(data.description){
+      const text=document.createElement('p');text.className='costume-description';text.textContent=data.description;container.append(text);
+    }
+    if(data.table){
+      const table=document.createElement('table');table.className='costume-table';
+      data.table.forEach((row,i)=>{const tr=document.createElement('tr');row.forEach(value=>{const td=document.createElement(i===0?'th':'td');td.textContent=value;tr.append(td);});table.append(tr);});
+      container.append(table);
+    }
+  }catch(error){
+    if(session!==costumeSession)return;
+    container.textContent='Не удалось загрузить карточку. Проверьте интернет.';
+    const retry=document.createElement('button');retry.className='list-item';retry.textContent='Повторить';retry.addEventListener('click',()=>render());container.append(retry);
+  }
+}
+
 function setHeader(t, s, placeholder='Поиск'){
   title.textContent = t;
   searchInput.placeholder = placeholder;
@@ -249,10 +276,13 @@ function navigate(route, push=true){
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
+let costumeSession = 0;
+
 function render(){
+  costumeSession++;
   closePdf();
   searchInput.value = '';
-  searchInput.closest('.search-wrap').classList.toggle('hidden', (activeRoute.startsWith('standard:') || activeRoute.startsWith('equipment:')));
+  searchInput.closest('.search-wrap').classList.toggle('hidden', activeRoute.startsWith('costume:') || activeRoute.startsWith('standard:') || activeRoute.startsWith('equipment:'));
   document.querySelector('.app-shell').classList.toggle('reading-pdf', (activeRoute.startsWith('standard:') || activeRoute.startsWith('equipment:')));
   if(activeRoute === 'home'){
     setHeader('Лихтер-техник','ОБОРУДОВАНИЕ · ЛЮДИ · ПРОЦЕССЫ','Поиск');
@@ -308,10 +338,35 @@ function render(){
           <button class="subcard searchable"><div>⌁</div><div class="big">M</div><div class="mini">состав</div></button>
           <button class="subcard searchable"><div>⌁</div><div class="big">XL</div><div class="mini">состав</div></button>
         </div>
-        <div class="section-title" style="margin-top:22px">Костюмы</div>
-        <div class="list">${listItem('⌘','Общий список костюмов','Для всех составов')}</div>
+
       `);
     }
+    if(DATA.costumes.some(c=>c.group===id)){
+      screen.insertAdjacentHTML('beforeend', '<div class="section-title" style="margin-top:22px">Костюмы</div><div class="list"><button class="list-item searchable" data-costume-group="'+id+'"><div class="list-icon">⌘</div><div class="list-main"><h4>Костюмы</h4><p>Фотографии и комплектность</p></div><div class="list-chevron">›</div></button></div>');
+      screen.querySelector('[data-costume-group]').addEventListener('click',()=>navigate('costumes:'+id));
+    }
+    return;
+  }
+
+  if(activeRoute.startsWith('costumes:')){
+    const group=activeRoute.slice(9);
+    setHeader('Костюмы','', 'Поиск по костюмам');
+    const items=DATA.costumes.filter(c=>c.group===group);
+    screen.innerHTML=`<div class="list">${items.map(c=>`
+      <button class="list-item searchable" data-costume="${c.id}" aria-label="${c.name}">
+        <img class="costume-thumb" src="./${c.photo}" alt="" loading="lazy">
+        <div class="list-main"><h4>${c.name}</h4></div><div class="list-chevron">›</div>
+      </button>`).join('')}</div>`;
+    screen.querySelectorAll('[data-costume]').forEach(button=>button.addEventListener('click',()=>navigate('costume:'+button.dataset.costume)));
+    return;
+  }
+
+  if(activeRoute.startsWith('costume:')){
+    const item=DATA.costumes.find(c=>c.id===activeRoute.slice(8));
+    if(!item){navigate('groups',false);return;}
+    setHeader(item.name,'');
+    screen.innerHTML='<div class="costume-detail"><div role="status">Загрузка…</div></div>';
+    showCostume(item,costumeSession);
     return;
   }
 
@@ -447,6 +502,7 @@ function searchScore(query, name, keywords=''){
 function searchCatalog(){
   return [
     ...DATA.groups.map(g=>({name:g.name,section:'Группы',route:'group:'+g.id,keywords:g.desc+' '+({'rvi-bayan':'rvi bayan','nemodnye':'nemodnye','konchiki':'на кончиках пальцев'}[g.id]||'')})),
+    ...DATA.costumes.map(c=>({name:c.name,section:DATA.groups.find(g=>g.id===c.group).name+' · Костюмы',route:'costume:'+c.id,keywords:'костюм одежда '+DATA.groups.find(g=>g.id===c.group).name})),
     ...DATA.equipment.map(d=>({name:d.name,section:DATA.groups.find(g=>g.id===d.group).name+' · Оборудование'+(d.category?' · '+d.category:''),route:'equipment:'+d.file,keywords:'оборудование список '+d.category+' '+DATA.groups.find(g=>g.id===d.group).name})),
     ...DATA.standards.map(d=>({name:d.name,section:'Стандарты',route:'standard:'+d.file,keywords:SEARCH_KEYWORDS[d.file]||''})),
     ...DATA.venues.map(v=>({name:v.name,section:'Площадки',route:'venues',keywords:v.city+' '+v.sound})),
