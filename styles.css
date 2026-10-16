@@ -127,3 +127,10 @@ a.list-item:focus-visible{outline:2px solid var(--blue-2);outline-offset:3px}
 .venue-fields>div:first-child dd{color:#9ecbff}
 .venue-select-label{display:block;color:var(--muted);font-size:12px;margin-top:12px}
 .venue-select{display:block;width:100%;margin-top:6px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--panel-2);color:var(--text);font:inherit;font-size:14px}
+
+.city-card{aspect-ratio:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;padding:20px;text-align:center}
+.city-card h3{font-size:18px}
+.city-landmark{width:100%;max-width:150px;color:#fff}
+.city-landmark svg{display:block;width:100%;height:auto}
+.city-switch{margin-left:auto;color:var(--text);border:1px solid var(--line);border-radius:999px;background:var(--panel);padding:9px 13px;font:inherit;font-size:12px;cursor:pointer}
+.city-card:focus-visible{outline:2px solid var(--blue-2);outline-offset:3px}
