@@ -275,6 +275,16 @@ function render(){
     const id = activeRoute.split(':')[1];
     const g = DATA.groups.find(x=>x.id===id) || DATA.groups[0];
     setHeader(g.name,'ГРУППА · МАТЕРИАЛЫ','Поиск по разделу');
+    if(id === 'nemodnye'){
+      screen.innerHTML = '<div class="section-title">Списки оборудования</div><div class="list">' +
+        [['vocals','Вокалисты'],['drums','Барабанщики']].map(([key,name])=>`
+          <button class="list-item searchable" data-equipment-category="${key}" aria-label="${name}">
+            <div class="list-icon">▣</div>
+            <div class="list-main"><h4>${name}</h4><p>Списки оборудования</p></div>
+            <div class="list-chevron">›</div>
+          </button>`).join('') + '</div>';
+      screen.querySelectorAll('[data-equipment-category]').forEach(button=>button.addEventListener('click',()=>navigate('equipment-category:'+button.dataset.equipmentCategory)));
+    } else {
     const documents = DATA.equipment.filter(doc=>doc.group===id);
     const categories = [...new Set(documents.map(doc=>doc.category))];
     screen.innerHTML = '<div class="section-title">Списки оборудования</div>' + categories.map(category=>{
@@ -288,6 +298,8 @@ function render(){
           </button>`).join('')}</div>`;
     }).join('');
     screen.querySelectorAll('[data-equipment]').forEach(button=>button.addEventListener('click',()=>navigate('equipment:'+button.dataset.equipment)));
+
+    }
     if(id === 'nemodnye'){
       screen.insertAdjacentHTML('beforeend', `
         <div class="section-title" style="margin-top:22px">Stage Plan</div>
@@ -300,6 +312,21 @@ function render(){
         <div class="list">${listItem('⌘','Общий список костюмов','Для всех составов')}</div>
       `);
     }
+    return;
+  }
+
+  if(activeRoute.startsWith('equipment-category:')){
+    const category = {vocals:'Вокалисты',drums:'Барабанщики'}[activeRoute.split(':')[1]];
+    if(!category){navigate('group:nemodnye',false);return;}
+    setHeader(category,'НЕМОДНЫЕ · ОБОРУДОВАНИЕ','Поиск по спискам');
+    const docs=DATA.equipment.filter(doc=>doc.group==='nemodnye' && doc.category===category);
+    screen.innerHTML=`<div class="list">${docs.map(doc=>`
+      <button class="list-item searchable" data-equipment="${doc.file}" aria-label="${doc.name} ${category}">
+        <div class="list-icon">▣</div>
+        <div class="list-main"><h4>${doc.name}</h4><p>Список оборудования · PDF</p></div>
+        <div class="list-chevron">›</div>
+      </button>`).join('')}</div>`;
+    screen.querySelectorAll('[data-equipment]').forEach(button=>button.addEventListener('click',()=>navigate('equipment:'+button.dataset.equipment)));
     return;
   }
 
