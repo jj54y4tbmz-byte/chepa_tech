@@ -439,7 +439,7 @@ function render(){
     const plan=STAGE_PLANS.find(p=>p.id===activeRoute.slice(6) && DATA.groups.some(g=>g.id===p.group));
     if(!plan){navigate('groups',false);return;}
     setHeader('Стейдж-план · '+plan.name,'');
-    screen.innerHTML=`<div class="stage-view"><img class="stage-image" src="./${plan.file}" alt="Стейдж-план — ${plan.name}"></div><p class="stage-status" role="status">Загрузка изображения…</p>`;
+    screen.innerHTML=`<div class="stage-view"><img class="stage-image" src="./${plan.file}?v=20261018-final" alt="Стейдж-план — ${plan.name}"></div><p class="stage-status" role="status">Загрузка изображения…</p>`;
     const img=screen.querySelector('.stage-image');
     const status=screen.querySelector('.stage-status');
     img.addEventListener('load',()=>{status.textContent='';});
