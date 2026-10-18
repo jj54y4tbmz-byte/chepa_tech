@@ -384,12 +384,25 @@ function render(){
     const group=DATA.groups.find(g=>g.id===id);
     if(!group){navigate('groups',false);return;}
     setHeader(group.name,'','Поиск по разделу');
-    const sections=[['costumes','Костюмы','⌘'],['stageplans','Стейдж-план','⌁'],['equipment-list','Списки оборудования','▣']];
+    const sections=[['costumes','Костюмы','⌘'],['stageplans','Стейдж-план','⌁'],['firstaid','Аптечка','✚'],['scenes','Сцены','▧'],['equipment-list','Списки оборудования','▣']];
     screen.innerHTML=`<div class="list">${sections.map(([route,name,icon])=>`
       <button class="list-item searchable" data-section="${route}:${id}">
         <div class="list-icon">${icon}</div><div class="list-main"><h4>${name}</h4></div><div class="list-chevron">›</div>
       </button>`).join('')}</div>`;
-    screen.querySelectorAll('[data-section]').forEach(button=>button.addEventListener('click',()=>navigate(button.dataset.section)));
+    screen.querySelectorAll('[data-section]').forEach(button=>button.addEventListener('click',()=>{
+      const route=button.dataset.section;
+      const plan=route.startsWith('stageplans:') && id!=='nemodnye' ? STAGE_PLANS.find(p=>p.group===id) : null;
+      navigate(plan?'stage:'+plan.id:route);
+    }));
+    return;
+  }
+
+  if(activeRoute.startsWith('firstaid:') || activeRoute.startsWith('scenes:')){
+    const [section,id]=activeRoute.split(':');
+    if(!DATA.groups.some(g=>g.id===id)){navigate('groups',false);return;}
+    setHeader(section==='firstaid'?'Аптечка':'Сцены','');
+    searchInput.closest('.search-wrap').classList.add('hidden');
+    screen.innerHTML='<div class="empty">Материалы пока не добавлены.</div>';
     return;
   }
 
@@ -426,16 +439,11 @@ function render(){
     const plan=STAGE_PLANS.find(p=>p.id===activeRoute.slice(6) && DATA.groups.some(g=>g.id===p.group));
     if(!plan){navigate('groups',false);return;}
     setHeader('Стейдж-план · '+plan.name,'');
-    screen.innerHTML=`<div class="stage-tools"><button type="button" data-zoom="out" aria-label="Уменьшить">−</button><button type="button" data-zoom="reset">По ширине</button><button type="button" data-zoom="in" aria-label="Увеличить">+</button></div><div class="stage-view"><img class="stage-image" src="./${plan.file}" alt="Стейдж-план — ${plan.name}"></div><p class="stage-status" role="status">Загрузка изображения…</p>`;
+    screen.innerHTML=`<div class="stage-view"><img class="stage-image" src="./${plan.file}" alt="Стейдж-план — ${plan.name}"></div><p class="stage-status" role="status">Загрузка изображения…</p>`;
     const img=screen.querySelector('.stage-image');
     const status=screen.querySelector('.stage-status');
     img.addEventListener('load',()=>{status.textContent='';});
     img.addEventListener('error',()=>{status.textContent='Не удалось загрузить изображение. Проверьте интернет и откройте план снова.';});
-    let zoom=1;
-    screen.querySelectorAll('[data-zoom]').forEach(button=>button.addEventListener('click',()=>{
-      zoom=button.dataset.zoom==='reset'?1:Math.max(1,Math.min(3,zoom+(button.dataset.zoom==='in'?0.5:-0.5)));
-      img.style.width=zoom*100+'%';
-    }));
     return;
   }
 

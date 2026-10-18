@@ -135,8 +135,6 @@ a.list-item:focus-visible{outline:2px solid var(--blue-2);outline-offset:3px}
 .city-switch{margin-left:auto;color:var(--text);border:1px solid var(--line);border-radius:999px;background:var(--panel);padding:9px 13px;font:inherit;font-size:12px;cursor:pointer}
 .city-card:focus-visible{outline:2px solid var(--blue-2);outline-offset:3px}
 
-.stage-tools{display:flex;justify-content:center;gap:10px;margin-bottom:14px}
-.stage-tools button{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:10px 15px;cursor:pointer}
 .stage-view{width:100%;overflow:auto;border-radius:12px}
 .stage-image{display:block;width:100%;max-width:none;height:auto}
 .stage-status{color:var(--muted);font-size:13px}
