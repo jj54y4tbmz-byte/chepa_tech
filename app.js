@@ -169,6 +169,7 @@ const BASE_DATA = {
 
 const MOSCOW_VENUES = [{"id":"venue-msk-021","name":"Бар Стрелка","address":"Берсеневская наб., 14/5","sound":"Местного нет","load":"Уточнить","parking":"Нет","dressing":"Общая зона"},{"id":"venue-msk-022","name":"Бар Техника Безопасности","address":"Ул. Сущностная 21с10","sound":"Местный; уточнить комплект","load":"Тащить на руках","parking":"Нет","dressing":"Общая стаф-зона"},{"id":"venue-msk-023","name":"Вилла Ротонда","address":"Озёрная ул., 127, Одинцово","sound":"Местного нет","load":"Уточнить","parking":"Есть","dressing":"Ок"},{"id":"venue-msk-024","name":"ГУМ","address":"Красная пл., 3","sound":"Местного нет","load":"нужен хелпер. ввоз через главный вход со стороны красной площади","parking":"Городская, платная","dressing":"Есть"},{"id":"venue-msk-025","name":"Золотой Лев","address":"Сапроново, ул. Слободка","sound":"Местного нет","load":"Нужен хелпер","parking":"Далеко","dressing":"Есть над сценой"},{"id":"venue-msk-026","name":"Клевер Лофт","address":"Холодильный пер., 3, к.1, стр.3","sound":"JBL EON 615 + сабвуферы; местный не по райдеру","load":"Уточнить","parking":"Нет. Только разгрузка","dressing":"Нет"},{"id":"venue-msk-027","name":"Кулибин Лофт","address":"Мытищи, пр-д 4529","sound":"Местного нет; местный комплект не по райдеру","load":"Зал на втором этаже, нужен хелпер","parking":"местная на улице","dressing":"Есть, хорошая"},{"id":"venue-msk-028","name":"Ласточка (Корабль)","address":"Лужнецкая наб., Москва","sound":"Местного нет","load":"Каршеринг нельзя","parking":"Есть местная к ресторану, нужно подавать список","dressing":"Хорошая"},{"id":"venue-msk-029","name":"Лес Ивент","address":"Центральная ул., 3Г, д. Марьино","sound":"Местного нет","load":"Через санаторий","parking":"Есть маленькая","dressing":"Маленькая"},{"id":"venue-msk-030","name":"Мэдисон","address":"Ленинградский пр-т, 31А, стр.1","sound":"Местный в подвесе. Не очень","load":"Долгий занос по коридорам","parking":"Уточнять","dressing":"Комната у сцены"},{"id":"venue-msk-031","name":"Особняк на Малой Ордынке","address":"Малая Ордынка, 14, стр.1","sound":"JBL EON 615 / 618; уточнить комплект","load":"Можно заехать разгрузиться","parking":"Уточнить","dressing":"Очень маленькая"},{"id":"venue-msk-032","name":"Отель Русские Сезоны","address":"Московская обл., Пересвет, ул. Пионерская, 9, 12","sound":"Местного нет","load":"Заезд через КПП-2. Подъезд к залу","parking":"Есть","dressing":"Есть"},{"id":"venue-msk-033","name":"Парк Берёзы (Открытая)","address":"Адрес не указан","sound":"Местного нет","load":"Каршеринг не пускают","parking":"Уточнить","dressing":"Палатка"},{"id":"venue-msk-034","name":"Ранчо","address":"Клинский район, д. Давыдково, вл.4А","sound":"Местного нет","load":"Далеко тащить по улице","parking":"есть","dressing":"в отдельном домике есть комнаты"},{"id":"venue-msk-035","name":"Ресторан Батлер","address":"Трёхпрудный пер., 15, Москва","sound":"Местного нет","load":"Сложный занос. Лучше рано утром","parking":"Нет","dressing":"Есть"},{"id":"venue-msk-036","name":"Ресторан Кедр","address":"Сосновая ул., 3, д. Зайцево","sound":"Местный; уточнить комплект","load":"Уточнить","parking":"Есть маленькая и ещё одна рядом","dressing":"Есть"},{"id":"venue-msk-037","name":"Ривер Клаб. Главный Причал","address":"Конаково, Тверская область","sound":"Местный, зал гулкий","load":"Уточнить","parking":"Есть","dressing":"Ок"},{"id":"venue-msk-038","name":"СкайРивер Яхт Клуб","address":"Земляничная ул., 5/3, село Троицкое","sound":"Местного нет","load":"Место за городом в лесу","parking":"Есть своя парковка","dressing":"Уточнить"},{"id":"venue-msk-039","name":"ТЦ Алмаз на Шаболовке. Фитнес-клуб DDX","address":"Ул. Шаболовка, 56, Москва","sound":"Местного нет","load":"Подъезд к служебному входу без проблем","parking":"Есть мини-парковка","dressing":"Уточнить"},{"id":"venue-msk-040","name":"Фишпоинт","address":"Симферопольское ш., 41 км, Подольск","sound":"EAW, местный; нужны фронтфилы","load":"Можно подъехать ко входу","parking":"Есть","dressing":"Очень маленькая"},{"id":"venue-msk-041","name":"Юдино Парк","address":"Юдино, 1Б","sound":"Местный; уточнить комплект","load":"Уточнить","parking":"Есть","dressing":"Нет"},{"id":"venue-msk-042","name":"Яуза Place","address":"Яузский бул., 12, Москва","sound":"Местного нет","load":"Уточнить","parking":"Только разгрузка","dressing":"Есть маленькая"},{"id":"venue-msk-002","name":"Artiland","address":"Балашиха, Новское шоссе, д.10, к.1","halls":[{"id":"venue-msk-003","name":"Панорамный","address":"Балашиха, Новское шоссе, д.10, к.1","sound":"Местный, но не очень. Висит высоко","load":"Машины подавать заранее","parking":"Есть","dressing":"Уточнить"},{"id":"venue-msk-004","name":"У Озера","address":"Балашиха, Новское шоссе, д.10, к.1","sound":"Местный, гулкий","load":"Со служебного","parking":"Уточнить","dressing":"Можно попросить домик"},{"id":"venue-msk-002","name":"Icon","address":"Балашиха, Новское шоссе, д.10, к.1","sound":"Комплект не указан; зал очень гулкий","load":"Уточнить","parking":"Уточнить","dressing":"Уточнить"}]},{"id":"venue-msk-005","name":"Goerlo Loft. Зал Hertz","address":"Большая Почтовая ул., 40, стр.7, Москва","sound":"Местный, не очень. TDA 4-Line 13 кВт","load":"Сложный: далеко по лестнице","parking":"Есть небольшая","dressing":"Очень маленькая внутри зала. Есть две гримерные большие и отдельные, в соседнем здании"},{"id":"venue-msk-006","name":"Holiday Inn Сокольники","address":"Русаковская ул., 24","sound":"Местный не по райдеру","load":"Уточнить","parking":"Есть. Надо подавать, по талончикам, которые обнуляются","dressing":"Хорошая"},{"id":"venue-msk-007","name":"La Riva Hall. Зал Grey","address":"Автозаводская ул., 23, стр.16","sound":"Местного нет","load":"Далеко нести","parking":"Есть. По спискам","dressing":"Есть"},{"id":"venue-msk-008","name":"Loft Hall","address":"2-й Кожуховский пр., 29, к.6","halls":[{"id":"venue-msk-008","name":"ЗИЛ — Banksy","address":"2-й Кожуховский пр., 29, к.6","sound":"Местный ок","load":"Уточнить","parking":"Есть, но стоять нельзя каршерингу","dressing":"Маленькая и жаркая"},{"id":"venue-msk-011","name":"Лонг","address":"Ленинградский пр-т, 31А, стр.1","sound":"Местного нет","load":"Уточнить","parking":"Уточнять. Машины подавать","dressing":"Очень маленькая"},{"id":"venue-msk-012","name":"Ратуша","address":"Ленинская Слобода, 26с15","sound":"Местный (уточнять)","load":"Уточнить","parking":"Нет","dressing":"Общая"},{"id":"venue-msk-009","name":"AVANTAGE","address":"Ленинская Слобода, 26, стр.35","sound":"Местный, зал гулкий","load":"Уточнить","parking":"150 ₽/час. Разгрузка 15 мин","dressing":"Общая"},{"id":"venue-msk-010","name":"Royal Blanc","address":"Ленинская Слобода, 26, стр.35","sound":"Местного нет","load":"Уточнить","parking":"150 ₽/час. Разгрузка 15 мин","dressing":"Общая узкая и маленький кабинетик внутри"}]},{"id":"venue-msk-013","name":"Michel Банкетный зал","address":"Ул. Красная Пресня","sound":"Местного нет","load":"Подъезд к шлагбауму. Тащить чуть по улице. Пешком по лестнице на 2 этаж","parking":"Парковки нет. Вокруг 380–450 ₽/час","dressing":"Есть маленькая"},{"id":"venue-msk-014","name":"Orion Hall","address":"Мичуринский просп., вл43","sound":"Местный и прокатный (уточнить)","load":"Подъезд к служебному и на лифте на этаж, либо через главный","parking":"Есть","dressing":"Есть"},{"id":"venue-msk-015","name":"Pine River. Зал «Ангар»","address":"Калужская обл., Жуковский район, Сосновый городок, 1","sound":"Местного нет","load":"Разгрузка через поле","parking":"Есть","dressing":"Есть (номера)"},{"id":"venue-msk-016","name":"Radisson Blu","address":"3-я Ямского поля, 26А","sound":"Местного нет","load":"Нужен хелпер. Созваниваться заранее","parking":"Есть, заранее подавать","dressing":"Норм"},{"id":"venue-msk-017","name":"Sixty (Москва-Сити)","address":"Пресненская наб., 12","sound":"Местного нет","load":"Строго по согласованию","parking":"От ресторана нет. местная в Сити","dressing":"Нет. Зона для переодевания"},{"id":"venue-msk-018","name":"Soho Country Club","address":"Одинцовский район, Мякининское шоссе, стр.3","sound":"Местного нет","load":"К сцене не подъехать. Тащить далеко","parking":"За территорией","dressing":"Есть номера в отеле при клубе"},{"id":"venue-msk-019","name":"Tangiers Lounge (ТЦ Botanica)","address":"Ул. Вильгельма Пика, 11, Москва","sound":"Местный не по райдеру; не используем","load":"Занос через спецпроход. Можно частично через ТЦ на лифте. 3 этаж","parking":"100 ₽/час","dressing":"Есть маленькая"},{"id":"venue-msk-020","name":"Villa Politica","address":"Рублёво-Успенское ш., ЖК Усово","sound":"Местного нет","load":"Уточнить","parking":"Машины подавать заранее","dressing":"Маленькая и душная"}];
 const DATA = {...BASE_DATA};
+const STAGE_PLANS = [{"id":"nemodnye-s","group":"nemodnye","name":"S состав (обычный)","file":"stage-nemodnye-s.png"},{"id":"nemodnye-m","group":"nemodnye","name":"M состав","file":"stage-nemodnye-m.png"},{"id":"nemodnye-xl","group":"nemodnye","name":"XL состав","file":"stage-nemodnye-xl.png"},{"id":"rvi-bayan","group":"rvi-bayan","name":"Рви Баян","file":"stage-rvi-bayan.png"},{"id":"true-party-band","group":"true-party-band","name":"True Party Band","file":"stage-true-party-band.png"},{"id":"konchiki","group":"konchiki","name":"На Кончиках Пальцев","file":"stage-konchiki.png"}];
 let activeCity = null;
 const CITY_NAMES = {spb:'Петербург',msk:'Москва'};
 
@@ -348,8 +349,8 @@ function render(){
   searchInput.value = '';
   document.querySelector('#citySwitch').textContent=activeCity?CITY_NAMES[activeCity]:'';
   document.querySelector('#citySwitch').classList.toggle('hidden',activeRoute==='cities');
-  searchInput.closest('.search-wrap').classList.toggle('hidden', activeRoute.startsWith('costume:') || activeRoute.startsWith('standard:') || activeRoute.startsWith('equipment:'));
-  document.querySelector('.app-shell').classList.toggle('reading-pdf', (activeRoute.startsWith('standard:') || activeRoute.startsWith('equipment:')));
+  searchInput.closest('.search-wrap').classList.toggle('hidden', activeRoute.startsWith('stage:') || activeRoute.startsWith('costume:') || activeRoute.startsWith('standard:') || activeRoute.startsWith('equipment:'));
+  document.querySelector('.app-shell').classList.toggle('reading-pdf', (activeRoute.startsWith('stage:') || activeRoute.startsWith('standard:') || activeRoute.startsWith('equipment:')));
   if(activeRoute === 'cities'){
     setHeader('Выберите город','','Поиск');
     searchInput.closest('.search-wrap').classList.add('hidden');
@@ -379,50 +380,62 @@ function render(){
   }
 
   if(activeRoute.startsWith('group:')){
-    const id = activeRoute.split(':')[1];
-    const g = DATA.groups.find(x=>x.id===id) || DATA.groups[0];
-    setHeader(g.name,'ГРУППА · МАТЕРИАЛЫ','Поиск по разделу');
-    if(activeCity==='msk'){screen.innerHTML='<div class="empty">Материалы московского филиала пока не добавлены.</div>';searchInput.closest('.search-wrap').classList.add('hidden');return;}
-    if(id === 'nemodnye'){
-      screen.innerHTML = '<div class="section-title">Списки оборудования</div><div class="list">' +
-        [['vocals','Вокалисты'],['drums','Барабанщики']].map(([key,name])=>`
-          <button class="list-item searchable" data-equipment-category="${key}" aria-label="${name}">
-            <div class="list-icon">▣</div>
-            <div class="list-main"><h4>${name}</h4><p>Списки оборудования</p></div>
-            <div class="list-chevron">›</div>
-          </button>`).join('') + '</div>';
-      screen.querySelectorAll('[data-equipment-category]').forEach(button=>button.addEventListener('click',()=>navigate('equipment-category:'+button.dataset.equipmentCategory)));
-    } else {
-    const documents = DATA.equipment.filter(doc=>doc.group===id);
-    const categories = [...new Set(documents.map(doc=>doc.category))];
-    screen.innerHTML = '<div class="section-title">Списки оборудования</div>' + categories.map(category=>{
-      const docs = documents.filter(doc=>doc.category===category);
-      return (category ? `<div class="section-title">${category}</div>` : '') +
-        `<div class="list">${docs.map(doc=>`
-          <button class="list-item searchable" data-equipment="${doc.file}" aria-label="${doc.name} ${category}">
-            <div class="list-icon">▣</div>
-            <div class="list-main"><h4>${doc.name}</h4><p>${category || 'Список оборудования'} · PDF</p></div>
-            <div class="list-chevron">›</div>
-          </button>`).join('')}</div>`;
-    }).join('');
-    screen.querySelectorAll('[data-equipment]').forEach(button=>button.addEventListener('click',()=>navigate('equipment:'+button.dataset.equipment)));
+    const id=activeRoute.split(':')[1];
+    const group=DATA.groups.find(g=>g.id===id);
+    if(!group){navigate('groups',false);return;}
+    setHeader(group.name,'','Поиск по разделу');
+    const sections=[['costumes','Костюмы','⌘'],['stageplans','Стейдж-план','⌁'],['equipment-list','Списки оборудования','▣']];
+    screen.innerHTML=`<div class="list">${sections.map(([route,name,icon])=>`
+      <button class="list-item searchable" data-section="${route}:${id}">
+        <div class="list-icon">${icon}</div><div class="list-main"><h4>${name}</h4></div><div class="list-chevron">›</div>
+      </button>`).join('')}</div>`;
+    screen.querySelectorAll('[data-section]').forEach(button=>button.addEventListener('click',()=>navigate(button.dataset.section)));
+    return;
+  }
 
+  if(activeRoute.startsWith('equipment-list:')){
+    const group=activeRoute.slice(15);
+    setHeader('Списки оборудования','','Поиск по спискам');
+    const docs=DATA.equipment.filter(d=>d.group===group);
+    if(!docs.length){screen.innerHTML='<div class="empty">Списки оборудования пока не добавлены.</div>';return;}
+    if(group==='nemodnye'){
+      screen.innerHTML='<div class="list">'+[['vocals','Вокалисты'],['drums','Барабанщики']].map(([key,name])=>`
+        <button class="list-item searchable" data-category="${key}"><div class="list-icon">▣</div><div class="list-main"><h4>${name}</h4></div><div class="list-chevron">›</div></button>`).join('')+'</div>';
+      screen.querySelectorAll('[data-category]').forEach(button=>button.addEventListener('click',()=>navigate('equipment-category:'+button.dataset.category)));
+    }else{
+      screen.innerHTML=`<div class="list">${docs.map(doc=>`
+        <button class="list-item searchable" data-equipment="${doc.file}" aria-label="${doc.name}">
+          <div class="list-icon">▣</div><div class="list-main"><h4>${doc.name}</h4><p>PDF</p></div><div class="list-chevron">›</div>
+        </button>`).join('')}</div>`;
+      screen.querySelectorAll('[data-equipment]').forEach(button=>button.addEventListener('click',()=>navigate('equipment:'+button.dataset.equipment)));
     }
-    if(id === 'nemodnye'){
-      screen.insertAdjacentHTML('beforeend', `
-        <div class="section-title" style="margin-top:22px">Stage Plan</div>
-        <div class="subgrid">
-          <button class="subcard searchable"><div>⌁</div><div class="big">Обычный</div><div class="mini">состав</div></button>
-          <button class="subcard searchable"><div>⌁</div><div class="big">M</div><div class="mini">состав</div></button>
-          <button class="subcard searchable"><div>⌁</div><div class="big">XL</div><div class="mini">состав</div></button>
-        </div>
+    return;
+  }
 
-      `);
-    }
-    if(DATA.costumes.some(c=>c.group===id)){
-      screen.insertAdjacentHTML('beforeend', '<div class="section-title" style="margin-top:22px">Костюмы</div><div class="list"><button class="list-item searchable" data-costume-group="'+id+'"><div class="list-icon">⌘</div><div class="list-main"><h4>Костюмы</h4><p>Фотографии и комплектность</p></div><div class="list-chevron">›</div></button></div>');
-      screen.querySelector('[data-costume-group]').addEventListener('click',()=>navigate('costumes:'+id));
-    }
+  if(activeRoute.startsWith('stageplans:')){
+    const group=activeRoute.slice(11);
+    setHeader('Стейдж-план','','Поиск по составам');
+    const plans=STAGE_PLANS.filter(p=>p.group===group && DATA.groups.some(g=>g.id===p.group));
+    screen.innerHTML=`<div class="list">${plans.map(p=>`
+      <button class="list-item searchable" data-stage="${p.id}"><div class="list-icon">⌁</div><div class="list-main"><h4>${p.name}</h4></div><div class="list-chevron">›</div></button>`).join('')}</div>`;
+    screen.querySelectorAll('[data-stage]').forEach(button=>button.addEventListener('click',()=>navigate('stage:'+button.dataset.stage)));
+    return;
+  }
+
+  if(activeRoute.startsWith('stage:')){
+    const plan=STAGE_PLANS.find(p=>p.id===activeRoute.slice(6) && DATA.groups.some(g=>g.id===p.group));
+    if(!plan){navigate('groups',false);return;}
+    setHeader('Стейдж-план · '+plan.name,'');
+    screen.innerHTML=`<div class="stage-tools"><button type="button" data-zoom="out" aria-label="Уменьшить">−</button><button type="button" data-zoom="reset">По ширине</button><button type="button" data-zoom="in" aria-label="Увеличить">+</button></div><div class="stage-view"><img class="stage-image" src="./${plan.file}" alt="Стейдж-план — ${plan.name}"></div><p class="stage-status" role="status">Загрузка изображения…</p>`;
+    const img=screen.querySelector('.stage-image');
+    const status=screen.querySelector('.stage-status');
+    img.addEventListener('load',()=>{status.textContent='';});
+    img.addEventListener('error',()=>{status.textContent='Не удалось загрузить изображение. Проверьте интернет и откройте план снова.';});
+    let zoom=1;
+    screen.querySelectorAll('[data-zoom]').forEach(button=>button.addEventListener('click',()=>{
+      zoom=button.dataset.zoom==='reset'?1:Math.max(1,Math.min(3,zoom+(button.dataset.zoom==='in'?0.5:-0.5)));
+      img.style.width=zoom*100+'%';
+    }));
     return;
   }
 
@@ -430,11 +443,11 @@ function render(){
     const group=activeRoute.slice(9);
     setHeader('Костюмы','', 'Поиск по костюмам');
     const items=DATA.costumes.filter(c=>c.group===group);
-    screen.innerHTML=`<div class="list">${items.map(c=>`
+    screen.innerHTML=items.length ? `<div class="list">${items.map(c=>`
       <button class="list-item searchable" data-costume="${c.id}" aria-label="${c.name}">
         <img class="costume-thumb" src="./${c.photo}" alt="" loading="lazy">
         <div class="list-main"><h4>${c.name}</h4></div><div class="list-chevron">›</div>
-      </button>`).join('')}</div>`;
+      </button>`).join('')}</div>` : '<div class="empty">Костюмы пока не добавлены.</div>';
     screen.querySelectorAll('[data-costume]').forEach(button=>button.addEventListener('click',()=>navigate('costume:'+button.dataset.costume)));
     return;
   }
@@ -589,6 +602,7 @@ function searchScore(query, name, keywords=''){
 function searchCatalog(){
   return [
     ...DATA.groups.map(g=>({name:g.name,section:'Группы',route:'group:'+g.id,keywords:g.desc+' '+({'rvi-bayan':'rvi bayan','nemodnye':'nemodnye','konchiki':'на кончиках пальцев'}[g.id]||'')})),
+    ...STAGE_PLANS.filter(p=>DATA.groups.some(g=>g.id===p.group)).map(p=>({name:'Стейдж-план · '+p.name,section:DATA.groups.find(g=>g.id===p.group).name,route:'stage:'+p.id,keywords:'stage plan сцена расположение состав '+DATA.groups.find(g=>g.id===p.group).name})),
     ...DATA.costumes.map(c=>({name:c.name,section:DATA.groups.find(g=>g.id===c.group).name+' · Костюмы',route:'costume:'+c.id,keywords:'костюм одежда '+DATA.groups.find(g=>g.id===c.group).name})),
     ...DATA.equipment.map(d=>({name:d.name,section:DATA.groups.find(g=>g.id===d.group).name+' · Оборудование'+(d.category?' · '+d.category:''),route:'equipment:'+d.file,keywords:'оборудование список '+d.category+' '+DATA.groups.find(g=>g.id===d.group).name})),
     ...DATA.standards.map(d=>({name:d.name,section:'Стандарты',route:'standard:'+d.file,keywords:SEARCH_KEYWORDS[d.file]||''})),
