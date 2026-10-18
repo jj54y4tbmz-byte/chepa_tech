@@ -384,7 +384,7 @@ function render(){
     const group=DATA.groups.find(g=>g.id===id);
     if(!group){navigate('groups',false);return;}
     setHeader(group.name,'','Поиск по разделу');
-    const sections=[['costumes','Костюмы','⌘'],['stageplans','Стейдж-план','⌁'],['firstaid','Аптечка','✚'],['scenes','Сцены','▧'],['equipment-list','Списки оборудования','▣']];
+    const sections=[['costumes','Костюмы','⌘'],['stageplans','Стейдж-план','⌁'],['firstaid','Аптечка','✚'],['scenes','Сцены','▧'],['equipment-list','Списки оборудования','▣']].filter(([route])=>id!=='konchiki' || route!=='costumes');
     screen.innerHTML=`<div class="list">${sections.map(([route,name,icon])=>`
       <button class="list-item searchable" data-section="${route}:${id}">
         <div class="list-icon">${icon}</div><div class="list-main"><h4>${name}</h4></div><div class="list-chevron">›</div>
