@@ -383,6 +383,42 @@ function renderKit(group,section,folders=[]){
 }
 
 
+
+function showDownloadFallback(url){
+  screen.querySelector('.download-fallback')?.remove();
+  const box=document.createElement('div');box.className='download-fallback';
+  const text=document.createElement('p');text.className='pdf-status';
+  text.textContent='Если файл не скачался, откройте его в браузере. На iPhone выберите «Поделиться» → «Сохранить в Файлы».';
+  const button=document.createElement('button');button.className='list-item';button.type='button';button.textContent='Открыть файл в браузере';
+  button.addEventListener('click',()=>{
+    const tg=window.Telegram?.WebApp;
+    if(tg?.initData && tg.openLink)tg.openLink(url);
+    else window.open(url,'_blank','noopener');
+  });
+  box.append(text,button);screen.append(box);
+}
+
+screen.addEventListener('click',event=>{
+  const link=event.target.closest('a[download]');
+  if(!link || !screen.contains(link))return;
+  const url=new URL(link.getAttribute('href'),window.location.href).href;
+  const name=link.getAttribute('download') || url.split('/').at(-1);
+  const tg=window.Telegram?.WebApp;
+  if(tg?.initData && tg.isVersionAtLeast?.('8.0') && typeof tg.downloadFile==='function'){
+    event.preventDefault();
+    showDownloadFallback(url);
+    try{tg.downloadFile({url,file_name:name});}
+    catch(error){/* The visible browser button remains available. */}
+  }else if(tg?.initData){
+    event.preventDefault();
+    showDownloadFallback(url);
+    tg.openLink(url);
+  }else if(/iPad|iPhone|iPod/.test(navigator.userAgent)){
+    showDownloadFallback(url);
+  }
+});
+
+
 function render(){
   costumeSession++;
   closePdf();
